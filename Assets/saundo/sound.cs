@@ -17,10 +17,6 @@ public class sound : MonoBehaviour
     [SerializeField] private AudioClip errsound;
     [SerializeField] private AudioClip break1sound;
 
-    void Start()
-    {
-        
-    }
 
 
     public void click()
