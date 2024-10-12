@@ -15,13 +15,19 @@ public class sound : MonoBehaviour
     [SerializeField] private AudioSource over;
 
     [SerializeField] private AudioClip click1sound;
-    [SerializeField] private AudioClip jampsund;
+    /*[SerializeField] private AudioClip jampsund;
     [SerializeField] private AudioClip drillsound;
     [SerializeField] private AudioClip errsound;
     [SerializeField] private AudioClip break1sound;
     [SerializeField] private AudioClip attaksound;
     [SerializeField] private AudioClip kriasound;
-    [SerializeField] private AudioClip oversound;
+    [SerializeField] private AudioClip oversound;*/
+
+
+    void Start()
+    {
+        drill1();
+    }
 
     public void click()//ボタンクリック
     {
@@ -30,35 +36,35 @@ public class sound : MonoBehaviour
 
     public void jamp1()//ジャンプ
     {
-        jamp.PlayOneShot(jampsund);
+        jamp.PlayOneShot(click1sound);
     }
 
     public void drill1()//攻撃（接触）
     {
-        drill.PlayOneShot(drillsound);
+        drill.PlayOneShot(click1sound);
     }
 
     public void err1()//壊せない
     {
-        err.PlayOneShot(errsound);
+        err.PlayOneShot(click1sound);
     }
 
     public void brek()//ブロック破壊
     {
-        break1.PlayOneShot(break1sound);
+        break1.PlayOneShot(click1sound);
     }
     public void attakku1()//岩石一回目
     {
-        attak.PlayOneShot(attaksound);
+        attak.PlayOneShot(click1sound);
     }
 
     public void kria1()//ゲームクリア
     {
-        kria.PlayOneShot(kriasound);
+        kria.PlayOneShot(click1sound);
     }
 
     public void over1()//ゲームオーバー
     {
-        over.PlayOneShot(oversound);
+        over.PlayOneShot(click1sound);
     }
 }
