@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class tutorial : MonoBehaviour
 {
     [SerializeField] GameObject Element0;
@@ -23,13 +25,18 @@ public class tutorial : MonoBehaviour
     }
     public void ChangeView(int a)
     {
+
+
         if (a == 0)
         {
+            
+
             Element0.SetActive(true);
             Element1.SetActive(false);
             Element2.SetActive(false);
             Element3.SetActive(false);
             Element4.SetActive(true);
+            FindObjectOfType<sound>().drill1();
         }
         else if (a == 1)
         {
