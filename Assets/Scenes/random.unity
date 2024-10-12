@@ -170,7 +170,7 @@ MonoBehaviour:
   y: 40
   posx: -9.47
   posy: -38.03
-  tileSize: 1
+  tileSize: 0.96
   io: {fileID: 3252236373497030124, guid: adb93447c93fbeb41a511625560c3421, type: 3}
   it: {fileID: 3753091614622861622, guid: 95b2bc9e05b4fe24a8cf9609b2f6bbd8, type: 3}
   go: {fileID: 5778396163954263080, guid: 968ac7a37f2b06142b7d3aecce9caeec, type: 3}
