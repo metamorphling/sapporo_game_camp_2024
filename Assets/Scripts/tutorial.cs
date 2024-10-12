@@ -43,7 +43,7 @@ public class tutorial : MonoBehaviour
         {
             Element0.SetActive(false);
             Element1.SetActive(false);
-            Element2.SetActive(true);
+            Element2.SetActive(false);
             Element3.SetActive(true);
             Element4.SetActive(false);
         }
