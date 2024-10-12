@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rigid2D = null;         // 剛体
-    float jumpForce = 5000000000.0f;    // ジャンプ力
+    public float jumpForce = 5000000000.0f;    // ジャンプ力
     bool isJumping = false;             // ジャンプ中か否か
     public float walkSpeed = 5000.0f;   // 歩く速度
 

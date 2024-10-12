@@ -7,13 +7,15 @@ public class random : MonoBehaviour
     [SerializeField] int x = 20;//ステージのマス数：横２０、盾４０
     [SerializeField] int y = 40;
 
-    [SerializeField] float posx=-9;//ブロックの座標ずらすやつ
-    [SerializeField] float posy=-38.03f;
+    [SerializeField] float posx = -9;//ブロックの座標ずらすやつ
+    [SerializeField] float posy = -38.03f;
     [SerializeField] float tileSize = 1f;
     [SerializeField] GameObject io, it, go, gt;
-    int[,] mapdate = new int [40,20];//type記録用の配列
+    int[,] mapdate;//type記録用の配列
+
     void Start()
     {
+        mapdate = new int[y, x];
         map();
     }
 
@@ -25,7 +27,7 @@ public class random : MonoBehaviour
             for (int j = 0; j < x; j++)//左下から右上に向かう
             {
                 int type = Random.Range(1, 5);//1～4のランダム：奇数が凹、偶数が凸
-                GameObject prefab =null;
+                GameObject prefab = null;
                 mapdate[i, j] = type;
                 Check(i, j);
                 switch (type)//ランダムの数値から配置
@@ -43,7 +45,7 @@ public class random : MonoBehaviour
                         prefab = gt;
                         break;
                 }
-                Vector2 position = new Vector2(j * tileSize+posx, i * tileSize+posy);
+                Vector2 position = new Vector2(j * tileSize + posx, i * tileSize + posy);
                 Instantiate(prefab, position, Quaternion.identity);
 
             }
@@ -63,14 +65,14 @@ public class random : MonoBehaviour
             for (int X = -1; X <= 1; X++)
             {
                 if (X == 0 && Y == 0) continue; // 自分はスキップ
-              //  if (X != 0 && Y != 0) continue;//斜めのスキップ
+                                                //  if (X != 0 && Y != 0) continue;//斜めのスキップ
 
                 int nX = j + X;
                 int nY = i + Y;
 
                 // スキップ
                 if (nX < 0 || nX >= x || nY < 0 || nY >= y) continue;
-                
+
                 // 周囲の奇数偶数を確認
                 bool isNeighborOdd = mapdate[nY, nX] % 2 != 0;
 
@@ -82,7 +84,7 @@ public class random : MonoBehaviour
                 }
             }
 
-            if (dif)break; 
+            if (dif) break;
         }
 
         if (!dif)

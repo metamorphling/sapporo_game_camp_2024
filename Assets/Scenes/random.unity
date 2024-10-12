@@ -166,11 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a71f815226c964685527612cf42aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 20
+  x: 40
   y: 40
-  posx: -9.25
-  posy: -38.03
-  tileSize: 0.96
+  posx: -936
+  posy: -1500
+  tileSize: 48
   io: {fileID: 3252236373497030124, guid: adb93447c93fbeb41a511625560c3421, type: 3}
   it: {fileID: 3753091614622861622, guid: 95b2bc9e05b4fe24a8cf9609b2f6bbd8, type: 3}
   go: {fileID: 5778396163954263080, guid: 968ac7a37f2b06142b7d3aecce9caeec, type: 3}
@@ -236,7 +236,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 540
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

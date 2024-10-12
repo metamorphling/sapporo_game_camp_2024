@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Background.unity
     guid: 1127c6df36a445147b560cce5824e1eb
   - enabled: 1
-    path: Assets/Scenes/Foreground2.unity
+    path: Assets/Scenes/Player.unity
     guid: 1c92500a53a71634d930adb3b569a110
   - enabled: 1
     path: Assets/Scenes/Block.unity

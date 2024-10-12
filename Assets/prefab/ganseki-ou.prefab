@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5255214209217016390}
   m_Layer: 0
   m_Name: ganseki-ou
-  m_TagString: Untagged
+  m_TagString: ou
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.7173505, y: -2.6244988, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -123,7 +123,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.048, y: 2.048}
+    oldSize: {x: 48, y: 48}
     newSize: {x: 2.048, y: 2.048}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -131,16 +131,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.3097012, y: 0.98399997}
-      - {x: 0.32673383, y: 0.013128638}
-      - {x: -0.3137083, y: 0.006013155}
-      - {x: -0.2935679, y: 0.9906001}
-      - {x: -0.952, y: 0.984}
-      - {x: -0.984, y: 0.9760001}
-      - {x: -0.984, y: -0.984}
-      - {x: 0.99200004, y: -0.984}
-      - {x: 0.99200004, y: 0.9760001}
-      - {x: 0.96800005, y: 0.984}
+    - - {x: 6, y: 24}
+      - {x: 6, y: 2}
+      - {x: -6, y: 2}
+      - {x: -6, y: 24}
+      - {x: -24, y: 24}
+      - {x: -24, y: -24}
+      - {x: 24, y: -24}
+      - {x: 24, y: 24}
   m_UseDelaunayMesh: 0
 --- !u!114 &8046034937468807184
 MonoBehaviour:
