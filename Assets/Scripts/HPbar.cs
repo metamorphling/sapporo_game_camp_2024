@@ -19,18 +19,18 @@ public class HPbar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            DecHP(1.0f);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            DecHP(2.0f);
-        }
+       
     }
 
+    //É_ÉÅÅ[ÉW
     void DecHP(float _damade)
     {
         slider.value -= _damade;
+    }
+
+    //âÒïúrecovery
+    void RecoveryHP(float _recovery)
+    {
+        slider.value += _recovery;
     }
 }
