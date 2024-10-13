@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public Sprite m_Sprite;
     public Sprite[] m_Sprites;
 
+    Animator animator;
+
     void Awake()
     {
         GameManager.PlayerObject = this;
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.animator = GetComponent<Animator>();
         this.rigid2D = GetComponent<Rigidbody2D>();
     }
 
@@ -73,10 +76,12 @@ public class Player : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal"); // 横の入力情報
         float velocityY = this.rigid2D.velocity.y; // 縦の移動量
         Vector2 velocity = new Vector2(0.0f, velocityY); // 移動量
+        this.animator.SetBool("walk", false);
 
         // 横移動
         if (Mathf.Abs(h) > 0.0f)
         {
+            this.animator.SetBool("walk", true);
             velocity = new Vector2(h * walkSpeed, velocityY);
         }
 
@@ -107,6 +112,7 @@ public class Player : MonoBehaviour
             // W キー，もしくは上矢印キーを押した
             isJumping = true; // ジャンプしている状態にする
             this.rigid2D.AddForce(transform.up * this.jumpForce);
+            this.animator.SetTrigger("JumpTrigger");
         }
     }
 
