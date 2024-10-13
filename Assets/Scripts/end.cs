@@ -18,24 +18,28 @@ public class end : MonoBehaviour
     public void EndGame()
     {
 
-        FindObjectOfType<sound>().click();
+        sound snd = FindObjectOfType<sound>();
+        if (snd)
+        {
+            snd.click();
+        }
 
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;//ƒQ[ƒ€ƒvƒŒƒCI—¹
+        UnityEditor.EditorApplication.isPlaying = false;//ï¿½Qï¿½[ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Cï¿½Iï¿½ï¿½
 #else
-        Application.Quit();//ƒQ[ƒ€ƒvƒŒƒCI—¹
+        Application.Quit();//ï¿½Qï¿½[ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Cï¿½Iï¿½ï¿½
 #endif
     }
     private void EndGameBottan()
     {
-        //Esc‚ª‰Ÿ‚³‚ê‚½
+        //Escï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½
         if (Input.GetKey(KeyCode.Backspace))
         {
 
 #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;//ƒQ[ƒ€ƒvƒŒƒCI—¹
+                UnityEditor.EditorApplication.isPlaying = false;//ï¿½Qï¿½[ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Cï¿½Iï¿½ï¿½
 #else
-            Application.Quit();//ƒQ[ƒ€ƒvƒŒƒCI—¹
+            Application.Quit();//ï¿½Qï¿½[ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Cï¿½Iï¿½ï¿½
 #endif
         }
 

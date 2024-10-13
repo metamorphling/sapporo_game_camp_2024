@@ -55,7 +55,11 @@ public class tutorial : MonoBehaviour
     }
     public void change_button()
     {
-        FindObjectOfType<sound>().click();
+        sound snd = FindObjectOfType<sound>();
+        if (snd)
+        {
+            snd.click();
+        }
         ChangeView(2);
     }
     void DelayMethod()

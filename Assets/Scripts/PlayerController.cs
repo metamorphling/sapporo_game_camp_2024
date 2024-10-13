@@ -14,18 +14,17 @@ public class Player : MonoBehaviour
     bool isDigLeft = false; // 左を掘る
     bool isDigRight = false; // 右を掘る
     bool isDigUnder = false; // 下を掘る
+    Animator animator; // アニメーター
 
-    public int m_index = 0;
-    public int numImages;
-
-    const string DIR_IMAGES = "Textures";
-    SpriteRenderer m_SpriteRenderer;
-    public Sprite m_Sprite;
-    public Sprite[] m_Sprites;
+    void Awake()
+    {
+        GameManager.PlayerObject = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        this.animator = GetComponent<Animator>();
         this.rigid2D = GetComponent<Rigidbody2D>();
     }
 
@@ -68,10 +67,12 @@ public class Player : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal"); // 横の入力情報
         float velocityY = this.rigid2D.velocity.y; // 縦の移動量
         Vector2 velocity = new Vector2(0.0f, velocityY); // 移動量
+        this.animator.SetBool("walk", false);
 
         // 横移動
         if (Mathf.Abs(h) > 0.0f)
         {
+            this.animator.SetBool("walk", true);
             velocity = new Vector2(h * walkSpeed, velocityY);
         }
 
@@ -98,10 +99,15 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            FindObjectOfType<sound>().jamp1();
+            sound snd = FindObjectOfType<sound>();
+            if (snd)
+            {
+                snd.jamp1();
+            }
             // W キー，もしくは上矢印キーを押した
             isJumping = true; // ジャンプしている状態にする
             this.rigid2D.AddForce(transform.up * this.jumpForce);
+            this.animator.SetTrigger("JumpTrigger");
         }
     }
 
@@ -146,7 +152,7 @@ public class Player : MonoBehaviour
             Vector2 dir = objectPos - playerPos; // 向き
 
             // 方向の取得
-            if (dir.x != 0.0f && dir.y != 0.0f)
+            if (dir.x != 0.0f || dir.y != 0.0f)
             {
                 if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
                 { // 横の方向の取得
@@ -223,47 +229,11 @@ public class Player : MonoBehaviour
         // 堀ったタグの更新
         prevDugTag = dugObject.tag;
 
+
         // スタミナバーを減らす
-        GameManager.HealthBar.DecHP(1);
+        GameManager.HealthBar.DecHP(2);
 
         // スタミナを減らす
-        hp -= 1;
+        hp -= 2;
     }
-
-#if false
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Retrieve all images in DIR_IMAGES
-        m_Sprites = Resources.LoadAll<Sprite>(DIR_IMAGES);
-        numImages = m_Sprites.Length;
-        Debug.Log("#images: " + m_Sprites.Length);
-        m_SpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        m_SpriteRenderer.sprite = m_Sprites[m_index];
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        float motion = Input.GetAxis("Mouse ScrollWheel");
-        if (motion != 0f)
-        {
-            if (motion > 0f) // forward
-            {
-                m_index = (m_index + 1) % numImages;
-                Debug.Log("m_index: " + m_index);
-            }
-            else if (motion < 0f) // backwards
-            {
-                --m_index;
-                if (m_index < 0)
-                {
-                    m_index = numImages - 1;
-                }
-                Debug.Log("m_index: " + m_index);
-            }
-            m_SpriteRenderer.sprite = m_Sprites[m_index];
-        }
-    }
-#endif
 }

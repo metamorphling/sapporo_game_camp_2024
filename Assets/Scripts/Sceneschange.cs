@@ -26,6 +26,11 @@ public class Sceneschange : MonoBehaviour
     }
     private IEnumerator a()
     {
+                    sound snd = FindObjectOfType<sound>();
+            if (snd)
+            {
+                snd.click();
+            }
         FindObjectOfType<sound>().click();
     yield return new WaitForSeconds(1);
     SceneManager.LoadScene("Main");

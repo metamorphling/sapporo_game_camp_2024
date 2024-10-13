@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class sound : MonoBehaviour
 {
@@ -36,7 +37,13 @@ public class sound : MonoBehaviour
         {
             // Sceneを遷移してもオブジェクトが消えないようにする
             DontDestroyOnLoad(this);
+
         }
+    }
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
     }
 
     public void click()//ボタンクリック

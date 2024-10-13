@@ -7,7 +7,11 @@ public class MainScene : MonoBehaviour
 {
     void Awake()
     {
-        FindObjectOfType<sound>().bgm2();
+        sound snd = FindObjectOfType<sound>();
+        if (snd)
+        {
+            snd.bgm2();
+        }
 
         GameManager.Initialize();
 
@@ -16,7 +20,7 @@ public class MainScene : MonoBehaviour
 
     IEnumerator MyCoroutine()
     {
-        SceneManager.LoadScene("Background", LoadSceneMode.Additive);
+        // SceneManager.LoadScene("Background", LoadSceneMode.Additive);
         SceneManager.LoadScene("UI", LoadSceneMode.Additive);
         SceneManager.LoadScene("Block", LoadSceneMode.Additive);
         SceneManager.LoadScene("Player", LoadSceneMode.Additive);

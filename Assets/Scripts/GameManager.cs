@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager
 {
     public static HPbar HealthBar;
+    public static Player PlayerObject;
     public static int JewelCount = 0;
     public static int TreasureCount =  0;
 
@@ -23,6 +24,7 @@ public class GameManager
         && GameManager.HealthBar
         && GameManager.HealthBar.slider.value <= 0)
         {
+            EndScreen.IsWin = false;
             SceneManager.LoadScene("End", LoadSceneMode.Single);
         }
     }
