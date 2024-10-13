@@ -24,6 +24,7 @@ public class GameManager
         && GameManager.HealthBar
         && GameManager.HealthBar.slider.value <= 0)
         {
+            EndScreen.IsWin = false;
             SceneManager.LoadScene("End", LoadSceneMode.Single);
         }
     }
