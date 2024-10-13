@@ -15,6 +15,14 @@ public class Player : MonoBehaviour
     bool isDigRight = false; // 右を掘る
     bool isDigUnder = false; // 下を掘る
 
+    public int m_index = 0;
+    public int numImages;
+
+    const string DIR_IMAGES = "Textures";
+    SpriteRenderer m_SpriteRenderer;
+    public Sprite m_Sprite;
+    public Sprite[] m_Sprites;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -132,39 +140,6 @@ public class Player : MonoBehaviour
             {
                 closestDistance = distance;
                 closestObject = otherObject;
-
-                bool canDig = false;
-                bool isUpdate = false;
-                if ((dirType == "under" && isDigUnder) ||
-                   (dirType == "left" && isDigLeft) ||
-                   (dirType == "right" && isDigRight))
-                {
-                    isUpdate = true;
-                    
-                }
-
-                string currDigTag = otherObject.tag;
-                if (prevDugTag == "none")
-                { // 始めて掘る
-                    canDig = true;
-                }
-                else
-                { // 掘るのが始めてじゃない
-                    if (prevDugTag == "ou" && currDigTag == "totu")
-                    { // 前回 "凹", かつ今回 "凸"
-                        canDig = true;
-                    }
-                    else if (prevDugTag == "totu" && currDigTag == "ou")
-                    { // 前回 "凸", かつ今回 "凹"
-                        canDig = true;
-                    }
-                }
-
-                if(canDig && isUpdate)
-				{
-                    closestDistance = distance;
-                    closestObject = otherObject;
-                }
             }
         }
 
@@ -194,16 +169,10 @@ public class Player : MonoBehaviour
 
             if (canDig)
             { // 掘ることができる
-                if (dirType == "left" && isDigLeft)
-                { // 左を掘る
-                    Dig(closestObject, dirType);
-                }
-                else if (dirType == "right" && isDigRight)
-                { // 右を掘る
-                    Dig(closestObject, dirType);
-                }
-                else if (dirType == "under" && isDigUnder)
-                { // 下を掘る
+                if((dirType == "left" && isDigLeft) ||
+                    (dirType == "right" && isDigRight) ||
+                    (dirType == "under" && isDigUnder))
+				{
                     Dig(closestObject, dirType);
                 }
             }
@@ -221,7 +190,47 @@ public class Player : MonoBehaviour
         // 堀ったタグの更新
         prevDugTag = dugObject.tag;
 
+        // スタミナバーを減らす
         GameManager.HealthBar.DecHP(1);
+
+        // スタミナを減らす
         hp -= 1;
     }
+
+#if false
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Retrieve all images in DIR_IMAGES
+        m_Sprites = Resources.LoadAll<Sprite>(DIR_IMAGES);
+        numImages = m_Sprites.Length;
+        Debug.Log("#images: " + m_Sprites.Length);
+        m_SpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        m_SpriteRenderer.sprite = m_Sprites[m_index];
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        float motion = Input.GetAxis("Mouse ScrollWheel");
+        if (motion != 0f)
+        {
+            if (motion > 0f) // forward
+            {
+                m_index = (m_index + 1) % numImages;
+                Debug.Log("m_index: " + m_index);
+            }
+            else if (motion < 0f) // backwards
+            {
+                --m_index;
+                if (m_index < 0)
+                {
+                    m_index = numImages - 1;
+                }
+                Debug.Log("m_index: " + m_index);
+            }
+            m_SpriteRenderer.sprite = m_Sprites[m_index];
+        }
+    }
+#endif
 }

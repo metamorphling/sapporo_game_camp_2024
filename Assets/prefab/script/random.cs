@@ -58,19 +58,11 @@ public class random : MonoBehaviour
                 if (type % 2 == 0 && i > 0 && mapdate[i - 1, j] % 2 != 0)
                 {
                     yOffset -= fit;
-                    fitmap[i, j] = 1;
+                    fitmap[i, j] = 2;
                 }
-                if (i > 0 && fitmap[i - 1, j] == 1)
+                  if (i > 0 && fitmap[i - 1, j] == 2)
                 {
-                    if(mapdate[i-1,j]%2==0)
-                    {
-                        yOffset -= 25f;
-                        Debug.Log("aaa");
-                    }
-                    else
-                    {
-                        yOffset -= 25f;
-                    }
+                    yOffset -= fit;
                 }
 
                 Vector2 position = new Vector2(j * tileSize + posx, i * tileSize + posy + yOffset);
