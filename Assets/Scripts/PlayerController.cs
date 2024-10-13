@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rigid2D = null;         // 剛体
-    public float jumpForce = 5000000000.0f;    // ジャンプ力
-    bool isJumping = false;             // ジャンプ中か否か
-    public float walkSpeed = 5000.0f;   // 歩く速度
+    Rigidbody2D rigid2D = null; // 剛体
+    public float jumpForce = 70000.0f; // ジャンプ力
+    public float walkSpeed = 500.0f; // 歩く速度
+    bool isJumping = false; // ジャンプ中か否か
+    string prevDugTag = "none"; // 前回堀ったブロックのタグ
+    int hp = 100; // スタミナ
+    bool isDig = false; // 掘るか否か
+    bool isDigLeft = false; // 左を掘る
+    bool isDigRight = false; // 右を掘る
+    bool isDigUnder = false; // 下を掘る
 
     // Start is called before the first frame update
     void Start()
@@ -24,16 +30,36 @@ public class Player : MonoBehaviour
         // 移動処理
         MoveUpdate();
 
-        // ブロックの破壊処理
-        //BreakBlock();
+        // 入力処理
+        InputUpdate();
+    }
+
+    // 入力処理
+    void InputUpdate()
+    {
+        isDig = Input.GetKeyDown(KeyCode.Space); // 掘るか否か
+        isDigLeft = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.LeftArrow); // 左を掘る
+        isDigRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow); // 右を掘る
+        isDigUnder = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow); // 下を掘る
+
+#if UNITY_EDITOR // デバッグ
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            GameManager.HealthBar.DecHP(10);
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            GameManager.HealthBar.RecoveryHP(10);
+        }
+#endif
     }
 
     // 移動処理
     void MoveUpdate()
-	{
-        float h = Input.GetAxisRaw("Horizontal");           // 横の入力情報
-        float velocityY = this.rigid2D.velocity.y;          // 縦の移動量
-        Vector2 velocity = new Vector2(0.0f, velocityY);    // 移動量
+    {
+        float h = Input.GetAxisRaw("Horizontal"); // 横の入力情報
+        float velocityY = this.rigid2D.velocity.y; // 縦の移動量
+        Vector2 velocity = new Vector2(0.0f, velocityY); // 移動量
 
         // 横移動
         if (Mathf.Abs(h) > 0.0f)
@@ -46,7 +72,7 @@ public class Player : MonoBehaviour
         {
             Vector3 localScale = transform.localScale;
             float absLocalScaleX = Mathf.Abs(localScale.x);
-            localScale.x = h > 0.0f ? absLocalScaleX : absLocalScaleX * -1.0f;
+            localScale.x = (h > 0.0f) ? absLocalScaleX : (absLocalScaleX * -1.0f);
             transform.localScale = localScale;
         }
 
@@ -57,76 +83,145 @@ public class Player : MonoBehaviour
     // ジャンプする関数
     void JumpUpdate()
     {
-        if(isJumping)
-		{ // 着地していない
+        if (isJumping)
+        { // 着地していない
             return;
-		}
+        }
 
-        if (Input.GetKeyDown(KeyCode.W) || 
-            Input.GetKeyDown(KeyCode.UpArrow))
-		{ // W キー，もしくは上矢印キーを押した
-            isJumping = true;  // ジャンプしている状態にする
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        { // W キー，もしくは上矢印キーを押した
+            isJumping = true; // ジャンプしている状態にする
             this.rigid2D.AddForce(transform.up * this.jumpForce);
         }
     }
 
-    // 衝突検出処理
-    void OnCollisionEnter(Collision other)
-    {
-        Debug.Log("test");
-
-        if (other.gameObject.tag == "ou")
-        {
-            Debug.Log("凹");
-        }
-        else if (other.gameObject.tag == "totu")
-        {
-            Debug.Log("凸");
-        }
-    }
-
     // 2D オブジェクトとの当たり判定の検出
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionStay2D(Collision2D other)
     {
-        float minDistance = 100000000.0f;   // 最短距離
-        ContactPoint2D contact2d;           // 接触しているオブジェクト
+        GameObject closestObject = null; // 一番近いオブジェクト
+        float closestDistance = float.MaxValue; // 最短距離
+        string dirType = "none"; // 向き
 
-        foreach (var contact in other.contacts)
+        foreach (ContactPoint2D contact in other.contacts)
         {
-            Vector2 dir = contact.point - (Vector2)transform.position;
-            float distance = dir.sqrMagnitude;
-            if(distance < minDistance)
-			{ // こっちのオブジェクトの方が近かった
-                distance = minDistance;
-                contact2d = contact;
+            GameObject otherObject = contact.collider.gameObject; // 衝突しているオブジェクト
+            Vector2 playerPos = transform.position; // プレイヤーの位置
+            Vector2 objectPos = otherObject.transform.position; // 衝突しているオブジェクトの位置
+            Vector2 dir = objectPos - playerPos; // 向き
+
+            // 方向の取得
+            if (dir.x != 0.0f && dir.y != 0.0f)
+            {
+                if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+                { // 横の方向の取得
+                    dirType = dir.x > 0 ? "right" : "left";
+                }
+                else
+                { // 縦の方向の取得
+                    if (dir.y <= 0)
+                    {
+                        isJumping = false; // ジャンプしていない状態にする
+                        dirType = "under";
+                    }
+                }
             }
 
-            float nor = -contact.normal.sqrMagnitude;
-            if (nor < 0.7f)
-			{
-                isJumping = false;
+            // 一番近いオブジェクトの更新
+            float distance = Vector2.Distance(transform.position, otherObject.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestObject = otherObject;
+
+                bool canDig = false;
+                bool isUpdate = false;
+                if ((dirType == "under" && isDigUnder) ||
+                   (dirType == "left" && isDigLeft) ||
+                   (dirType == "right" && isDigRight))
+                {
+                    isUpdate = true;
+                    
+                }
+
+                string currDigTag = otherObject.tag;
+                if (prevDugTag == "none")
+                { // 始めて掘る
+                    canDig = true;
+                }
+                else
+                { // 掘るのが始めてじゃない
+                    if (prevDugTag == "ou" && currDigTag == "totu")
+                    { // 前回 "凹", かつ今回 "凸"
+                        canDig = true;
+                    }
+                    else if (prevDugTag == "totu" && currDigTag == "ou")
+                    { // 前回 "凸", かつ今回 "凹"
+                        canDig = true;
+                    }
+                }
+
+                if(canDig && isUpdate)
+				{
+                    closestDistance = distance;
+                    closestObject = otherObject;
+                }
             }
         }
 
-        // 衝突したオブジェクトのタグを取得
-        if (other.gameObject.tag == "ou")
-        {
-            Debug.Log("凹");
-        }
-        else if (other.gameObject.tag == "totu")
-        {
-            Debug.Log("凸");
+        // 掘る
+        if (closestObject != null &&
+            isDig)
+        { // オブジェクトが空じゃない，かつ掘るフラグが真
+
+            // 掘れるかどうかの判定
+            bool canDig = false;
+            string currDigTag = closestObject.tag;
+            if (prevDugTag == "none")
+            { // 始めて掘る
+                canDig = true;
+            }
+            else
+            { // 掘るのが始めてじゃない
+                if (prevDugTag == "ou" && currDigTag == "totu")
+                { // 前回 "凹", かつ今回 "凸"
+                    canDig = true;
+                }
+                else if (prevDugTag == "totu" && currDigTag == "ou")
+                { // 前回 "凸", かつ今回 "凹"
+                    canDig = true;
+                }
+            }
+
+            if (canDig)
+            { // 掘ることができる
+                if (dirType == "left" && isDigLeft)
+                { // 左を掘る
+                    Dig(closestObject, dirType);
+                }
+                else if (dirType == "right" && isDigRight)
+                { // 右を掘る
+                    Dig(closestObject, dirType);
+                }
+                else if (dirType == "under" && isDigUnder)
+                { // 下を掘る
+                    Dig(closestObject, dirType);
+                }
+            }
         }
     }
 
-#if false
-    // ブロックの破壊
-    void BreakBlock()
-	{
-        if ()
-		{
+    // 掘る
+    void Dig(GameObject dugObject, string dirType)
+    {
+        // 破棄
+        Destroy(dugObject);
+        Debug.Log("堀ったオブジェクト: " + dugObject.name);
+        Debug.Log(dirType);
 
-		}
-	}
-#endif
+        // 堀ったタグの更新
+        prevDugTag = dugObject.tag;
+
+        GameManager.HealthBar.DecHP(1);
+        hp -= 1;
+    }
 }
