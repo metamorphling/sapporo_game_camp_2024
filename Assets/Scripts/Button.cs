@@ -49,18 +49,18 @@ public class Button : MonoBehaviour
     // ボタンが押された場合、今回呼び出される関数
     public void ClickContenue()
     {
-        Debug.Log("押された1!");  // ログを出力
+        Debug.Log("contenue!");  // ログを出力
     }
 
     // ボタンが押された場合、今回呼び出される関数
     public void ClickRetry()
     {
-        Debug.Log("押された2!");  // ログを出力
+        Debug.Log("retry!");  // ログを出力
     }
 
     // ボタンが押された場合、今回呼び出される関数
     public void ClickQuit()
     {
-        Debug.Log("押された3!");  // ログを出力
+        Debug.Log("quit!");  // ログを出力
     }
 }
