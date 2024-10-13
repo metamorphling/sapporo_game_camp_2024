@@ -102,6 +102,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 70000
   walkSpeed: 500
+  m_index: 0
+  numImages: 0
+  m_Sprite: {fileID: 0}
+  m_Sprites: []
 --- !u!50 &7933628891542632491
 Rigidbody2D:
   serializedVersion: 4
