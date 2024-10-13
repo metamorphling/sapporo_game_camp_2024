@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1134453051403193578}
   - component: {fileID: 1782782850546346800}
-  - component: {fileID: 5647432328631302040}
-  - component: {fileID: 7355060878812555412}
-  - component: {fileID: 9138818656731059573}
+  - component: {fileID: 7943114355375801614}
+  - component: {fileID: 7868858371306855165}
   m_Layer: 0
-  m_Name: isi_ou
-  m_TagString: ou
+  m_Name: dropitem
+  m_TagString: drop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d5eec5e1ceab9b042b83385295b37eed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e9f3cd44065494e42b6152fcc65d28dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5647432328631302040
+--- !u!114 &7943114355375801614
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,33 +95,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3252236373497030124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0487d504bb48bf74bb6616bfc13b07e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 77deb2baca42b4f09b46fdeb30262f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemSpawnOnDestroy: {fileID: 3252236373497030124, guid: 7e811886974964a7c99ab0f0100e4106, type: 3}
---- !u!95 &7355060878812555412
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3252236373497030124}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 104077720ea21434a918c8030cdcac54, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!60 &9138818656731059573
-PolygonCollider2D:
+  ItemImage: {fileID: 1782782850546346800}
+  Restore: {fileID: 21300000, guid: e9f3cd44065494e42b6152fcc65d28dd, type: 3}
+  Treasure: {fileID: 21300000, guid: 9bd78bc02a036504394c51beaed08536, type: 3}
+  Jewel: {fileID: 21300000, guid: 9bd78bc02a036504394c51beaed08536, type: 3}
+--- !u!61 &7868858371306855165
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -130,7 +111,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 3252236373497030124}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: ebfdb9cd1edc37f408b1389c179fb69f, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -163,15 +144,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 9.113349, y: 32.00579}
-      - {x: 9.780524, y: 2.44477}
-      - {x: 6, y: 2}
-      - {x: -8.890972, y: 2}
-      - {x: -9.558122, y: 32.450554}
-      - {x: -32.228172, y: 31.783405}
-      - {x: -31.783407, y: -31.56103}
-      - {x: 32.005775, y: -32.005775}
-      - {x: 32.00577, y: 32.00579}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 64, y: 64}
+  m_EdgeRadius: 0

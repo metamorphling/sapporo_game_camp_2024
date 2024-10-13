@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ganseki : MonoBehaviour
+public class ganseki : block
 {
     int HP = 2;
     Animator anim;
     void Start()
     {
+        base.Start();
         HP = 2;
         anim = GetComponent<Animator>();
     }
@@ -15,6 +16,7 @@ public class ganseki : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        base.Update();
         if (HP != 2)
         {
             anim.SetBool("hibi", true);

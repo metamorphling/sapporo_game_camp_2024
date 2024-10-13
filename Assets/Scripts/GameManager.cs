@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager
 {
     public static HPbar HealthBar;
+    public static int JewelCount = 0;
+    public static int TreasureCount =  0;
 
     public static void Update()
     {
@@ -30,6 +29,8 @@ public class GameManager
 
     public static void Initialize()
     {
+        JewelCount = 0;
+        TreasureCount = 0;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
