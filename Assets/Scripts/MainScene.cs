@@ -20,4 +20,9 @@ public class MainScene : MonoBehaviour
         SceneManager.LoadScene("Player", LoadSceneMode.Additive);
         yield return null;
     }
+
+    void Update()
+    {
+        GameManager.Update();
+    }
 }

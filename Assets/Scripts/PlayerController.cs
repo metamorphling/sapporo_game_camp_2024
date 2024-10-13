@@ -26,17 +26,6 @@ public class Player : MonoBehaviour
 
         // ブロックの破壊処理
         //BreakBlock();
-
-#if UNITY_EDITOR // デバッグ
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            GameManager.HealthBar.DecHP(10);
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            GameManager.HealthBar.RecoveryHP(10);
-        }
-#endif
     }
 
     // 移動処理
