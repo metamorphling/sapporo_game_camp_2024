@@ -229,10 +229,11 @@ public class Player : MonoBehaviour
         // 堀ったタグの更新
         prevDugTag = dugObject.tag;
 
+
         // スタミナバーを減らす
-        GameManager.HealthBar.DecHP(1);
+        GameManager.HealthBar.DecHP(2);
 
         // スタミナを減らす
-        hp -= 1;
+        hp -= 2;
     }
 }
