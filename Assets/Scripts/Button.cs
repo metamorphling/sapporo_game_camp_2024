@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
@@ -50,17 +51,21 @@ public class Button : MonoBehaviour
     public void ClickContenue()
     {
         Debug.Log("contenue!");  // ログを出力
+
+SceneManager.UnloadSceneAsync("pause");
     }
 
     // ボタンが押された場合、今回呼び出される関数
     public void ClickRetry()
     {
         Debug.Log("retry!");  // ログを出力
+        SceneManager.LoadScene("Main", LoadSceneMode.Single);
     }
 
     // ボタンが押された場合、今回呼び出される関数
     public void ClickQuit()
     {
         Debug.Log("quit!");  // ログを出力
+        SceneManager.LoadScene("strat", LoadSceneMode.Single);
     }
 }

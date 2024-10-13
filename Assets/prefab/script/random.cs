@@ -15,12 +15,15 @@ public class random : MonoBehaviour
 
     int[,] mapdate; // type記録用の配列
     int[,] fitmap; // 下がったかどうかの確認用の配列
-
+    bool[] lower;
+    float yOffset;
     void Start()
     {
         mapdate = new int[y, x];
         fitmap = new int[y, x];
+        lower = new bool[x];
         Map();
+        low();
     }
 
     void Map()
@@ -59,10 +62,13 @@ public class random : MonoBehaviour
                 {
                     yOffset -= fit;
                     fitmap[i, j] = 2;
+                    lower[j] = true; // 列を下がったとマーク
                 }
-                  if (i > 0 && fitmap[i - 1, j] == 2)
+                if (i > 0 && fitmap[i - 1, j] == 2)
                 {
                     yOffset -= fit;
+                    fitmap[i, j] = 2;
+                    lower[j] = true; // 列を下がったとマーク
                 }
 
                 Vector2 position = new Vector2(j * tileSize + posx, i * tileSize + posy + yOffset);
@@ -76,6 +82,24 @@ public class random : MonoBehaviour
             }
         }
     } // マップ生成の関数
+
+    void low()
+    {
+        for (int j = 0; j < x; j++) // 各列をループ
+        {
+            if (lower[j]) // 列が下がったかを確認
+            {
+                for (int i = 0; i < y; i++) // 列内の各行をループ
+                {
+                    // ブロックがインスタンス化されているか確認（空でないか）
+                    if (mapdate[i, j] != 0) // ブロックの位置を調整
+                    {
+                        yOffset = -fit*1.2f;
+                    }
+                }
+            }
+        }
+    } // 下がった列の位置を調整
 
     void Check(int i, int j,int type)
     {
