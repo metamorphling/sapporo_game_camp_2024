@@ -152,7 +152,7 @@ public class Player : MonoBehaviour
             Vector2 dir = objectPos - playerPos; // Œü‚«
 
             // •ûŒü‚ÌŽæ“¾
-            if (dir.x != 0.0f && dir.y != 0.0f)
+            if (dir.x != 0.0f || dir.y != 0.0f)
             {
                 if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
                 { // ‰¡‚Ì•ûŒü‚ÌŽæ“¾
