@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager
 {
+    public static HPbar HealthBar;
+
     public static void Initialize()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;

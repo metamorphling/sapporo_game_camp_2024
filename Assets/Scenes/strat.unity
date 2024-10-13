@@ -793,14 +793,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   click1: {fileID: 318514705}
-  jamp: {fileID: 318514708}
-  drill: {fileID: 318514711}
-  err: {fileID: 318514710}
-  break1: {fileID: 318514709}
-  attak: {fileID: 318514715}
-  kria: {fileID: 318514714}
-  over: {fileID: 318514713}
   click1sound: {fileID: 8300000, guid: 04be8662a5ede3041a891edd1582e471, type: 3}
+  jampsund: {fileID: 0}
+  drillsound: {fileID: 0}
+  errsound: {fileID: 0}
+  break1sound: {fileID: 0}
+  attaksound: {fileID: 0}
+  kriasound: {fileID: 0}
+  oversound: {fileID: 0}
 --- !u!82 &318514713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1422,7 +1422,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1518,7 +1518,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1701,8 +1701,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1917619159}
-  - {fileID: 745011081}
   - {fileID: 1607540514}
+  - {fileID: 745011081}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

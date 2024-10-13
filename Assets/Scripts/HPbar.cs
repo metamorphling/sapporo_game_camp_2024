@@ -9,6 +9,7 @@ public class HPbar : MonoBehaviour
     float maxHP;
     float damade;
     // Start is called before the first frame update
+
     void Start()
     {
         maxHP = 100.0f;
@@ -19,17 +20,20 @@ public class HPbar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+        if (!GameManager.HealthBar)
+        {
+            GameManager.HealthBar = this;
+        }
     }
 
     //É_ÉÅÅ[ÉW
-    void DecHP(float _damade)
+    public void DecHP(float _damade)
     {
         slider.value -= _damade;
     }
 
     //âÒïúrecovery
-    void RecoveryHP(float _recovery)
+    public void RecoveryHP(float _recovery)
     {
         slider.value += _recovery;
     }
