@@ -103,6 +103,32 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "drop")
+        {
+            dropitem it = other.gameObject.GetComponent<dropitem>();
+            if (it)
+            {
+                if (it.Type == dropitem.ItemType.STAMINA_RESTORE)
+                {
+                    GameManager.HealthBar.RecoveryHP(10);
+                    Destroy(other.gameObject);
+                } 
+                else if (it.Type == dropitem.ItemType.SCORE_TREASURE)
+                {
+                    GameManager.TreasureCount++;
+                    Destroy(other.gameObject);
+                } 
+                else if (it.Type == dropitem.ItemType.SCORE_JEWEL)
+                {
+                    GameManager.JewelCount++;
+                    Destroy(other.gameObject);
+                }
+            }
+        }
+    }
+
     // 2D オブジェクトとの当たり判定の検出
     void OnCollisionStay2D(Collision2D other)
     {
@@ -183,6 +209,11 @@ public class Player : MonoBehaviour
     void Dig(GameObject dugObject, string dirType)
     {
         // 破棄
+        block bl = dugObject.GetComponent<block>();
+        if (bl)
+        {
+            bl.Deinit(); 
+        }
         Destroy(dugObject);
         Debug.Log("堀ったオブジェクト: " + dugObject.name);
         Debug.Log(dirType);

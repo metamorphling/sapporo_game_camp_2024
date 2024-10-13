@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class isi : MonoBehaviour
+public class isi : block
 {
     int HP = 2;
     Animator anim;
     // public plHP plHP;//プレイヤーのスタミナ
     void Start()
     {
+        base.Start();
         HP = 2;
         anim = GetComponent<Animator>();
     }
@@ -16,6 +17,7 @@ public class isi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        base.Update();
         if (HP <= 0)
         {
             anim.SetTrigger("break");

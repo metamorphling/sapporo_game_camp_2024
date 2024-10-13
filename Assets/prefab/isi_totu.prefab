@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0487d504bb48bf74bb6616bfc13b07e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemSpawnOnDestroy: {fileID: 3252236373497030124, guid: 7e811886974964a7c99ab0f0100e4106, type: 3}
 --- !u!95 &5228927124952849058
 Animator:
   serializedVersion: 5
