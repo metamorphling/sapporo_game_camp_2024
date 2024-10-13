@@ -4,33 +4,39 @@ using UnityEngine;
 
 public class random : MonoBehaviour
 {
-    [SerializeField] int x = 20;//ステージのマス数：横２０、盾４０
+    [SerializeField] int x = 20; // ステージのマス数：横２０、縦４０
     [SerializeField] int y = 40;
 
-    [SerializeField] float posx = -9;//ブロックの座標ずらすやつ
+    [SerializeField] float posx = -9; // ブロックの座標ずらすやつ
     [SerializeField] float posy = -38.03f;
-    [SerializeField] float tileSize = 1f;
-    [SerializeField] GameObject io, it, go, gt;
-    int[,] mapdate;//type記録用の配列
+    [SerializeField] float fit = 23.5f; // Y座標の調整用
+    [SerializeField] float tileSize = 1f; // ブロックサイズ
+    [SerializeField] GameObject io, it, go, gt; // プレハブ
+
+    int[,] mapdate; // type記録用の配列
+    int[,] fitmap; // 下がったかどうかの確認用の配列
 
     void Start()
     {
         mapdate = new int[y, x];
-        map();
+        fitmap = new int[y, x];
+        GenerateMap();
     }
 
-
-    void map()
+    void GenerateMap()
     {
-        for (int i = 0; i < y; i++)
+        for (int i = 0; i < y; i++) // 行のループ
         {
-            for (int j = 0; j < x; j++)//左下から右上に向かう
+            for (int j = 0; j < x; j++) // 列のループ
             {
-                int type = Random.Range(1, 5);//1～4のランダム：奇数が凹、偶数が凸
+                int type = Random.Range(1, 5); // 1～4のランダム：奇数が凹、偶数が凸
                 GameObject prefab = null;
+
                 mapdate[i, j] = type;
                 Check(i, j);
-                switch (type)//ランダムの数値から配置
+
+                // タイプに応じてプレハブを選択
+                switch (type)
                 {
                     case 1:
                         prefab = io;
@@ -45,12 +51,31 @@ public class random : MonoBehaviour
                         prefab = gt;
                         break;
                 }
-                Vector2 position = new Vector2(j * tileSize + posx, i * tileSize + posy);
+
+                float yOffset = 0f;
+
+                // 必要に応じて位置を調整
+                if (type % 2 == 0 && i > 0 && mapdate[i - 1, j] % 2 != 0)
+                {
+                    yOffset -= fit;
+                    fitmap[i, j] = 1;
+                }
+                if (i > 0 && fitmap[i - 1, j] == 1)
+                {
+                    yOffset -= fit; 
+                }
+
+                Vector2 position = new Vector2(j * tileSize + posx, i * tileSize + posy + yOffset);
                 Instantiate(prefab, position, Quaternion.identity);
 
+                
+                if (i < y - 1 && fitmap[i, j] == 1)
+                {
+                    fitmap[i + 1, j] = 1;
+                }
             }
         }
-    }//マップ生成の関数
+    } // マップ生成の関数
 
     void Check(int i, int j)
     {
@@ -65,7 +90,6 @@ public class random : MonoBehaviour
             for (int X = -1; X <= 1; X++)
             {
                 if (X == 0 && Y == 0) continue; // 自分はスキップ
-                                                //  if (X != 0 && Y != 0) continue;//斜めのスキップ
 
                 int nX = j + X;
                 int nY = i + Y;
@@ -91,5 +115,5 @@ public class random : MonoBehaviour
         {
             mapdate[i, j] = (mapdate[i, j] % 2 == 0) ? mapdate[i, j] - 1 : mapdate[i, j] + 1;
         }
-    }//マップチェックの関数
+    } // マップチェックの関数
 }

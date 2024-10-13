@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4555822636471068708}
   - component: {fileID: 1321890498399702400}
   - component: {fileID: 5228927124952849058}
-  - component: {fileID: 6586144482802691367}
+  - component: {fileID: 3795420937266884718}
   m_Layer: 0
   m_Name: isi_totu
   m_TagString: totu
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.16, y: -2.64, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: -1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -120,7 +120,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!60 &6586144482802691367
+--- !u!60 &3795420937266884718
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,9 +154,9 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0, y: 0, z: 0, w: 23}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 48, y: 72}
+    oldSize: {x: 48, y: 48}
     newSize: {x: 2.048, y: 2.048}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -164,12 +164,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 9, y: 4}
-      - {x: 9, y: 36}
-      - {x: -9, y: 36}
-      - {x: -9, y: 4}
-      - {x: -24, y: 4}
-      - {x: -24, y: -36}
-      - {x: 24, y: -36}
-      - {x: 24, y: 4}
+    - - {x: 9, y: 2.4158566}
+      - {x: 9, y: 24.847708}
+      - {x: -9.206516, y: 25.054232}
+      - {x: -9, y: 2.6138866}
+      - {x: -24, y: 2.811895}
+      - {x: -23.801975, y: -24.118973}
+      - {x: 24.792068, y: -24.31699}
+      - {x: 24, y: 2.01983}
   m_UseDelaunayMesh: 0
