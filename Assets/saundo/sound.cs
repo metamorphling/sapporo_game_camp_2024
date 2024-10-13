@@ -27,8 +27,7 @@ public class sound : MonoBehaviour
     [SerializeField] private AudioClip bgm1sound;
     [SerializeField] private AudioClip bgm2sound;
 
-
- public bool DontDestroyEnabled = true;
+    public bool DontDestroyEnabled = true;
 
     void Start()
     {
@@ -37,7 +36,6 @@ public class sound : MonoBehaviour
         {
             // Sceneを遷移してもオブジェクトが消えないようにする
             DontDestroyOnLoad(this);
-
         }
     }
 
