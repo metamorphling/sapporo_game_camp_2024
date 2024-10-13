@@ -15,7 +15,8 @@ public class tutorial : MonoBehaviour
     void Start()
     {
         ChangeView(0);
-        Invoke(nameof(DelayMethod), 3.5f);
+        // Invoke(nameof(DelayMethod), 0.0f);
+        DelayMethod();
     }
 
     // Update is called once per frame
@@ -25,12 +26,8 @@ public class tutorial : MonoBehaviour
     }
     public void ChangeView(int a)
     {
-
-
         if (a == 0)
         {
-            
-
             Element0.SetActive(true);
             Element1.SetActive(false);
             Element2.SetActive(false);
@@ -40,7 +37,7 @@ public class tutorial : MonoBehaviour
         }
         else if (a == 1)
         {
-            Element0.SetActive(false);
+            Element0.SetActive(true);
             Element1.SetActive(true);
             Element2.SetActive(true);
             Element3.SetActive(false);
@@ -66,7 +63,7 @@ public class tutorial : MonoBehaviour
 
     private void OnDestroy()
     {
-        // DestroyŽž‚É“o˜^‚µ‚½Invoke‚ð‚·‚×‚ÄƒLƒƒƒ“ƒZƒ‹
+        // Destroyï¿½ï¿½ï¿½É“oï¿½^ï¿½ï¿½ï¿½ï¿½Invokeï¿½ï¿½ï¿½ï¿½ï¿½×‚ÄƒLï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½
         CancelInvoke();
     }
 }
