@@ -101,7 +101,7 @@ MonoBehaviour:
   ItemImage: {fileID: 1782782850546346800}
   Restore: {fileID: 21300000, guid: e9f3cd44065494e42b6152fcc65d28dd, type: 3}
   Treasure: {fileID: 21300000, guid: 9bd78bc02a036504394c51beaed08536, type: 3}
-  Jewel: {fileID: 21300000, guid: 9bd78bc02a036504394c51beaed08536, type: 3}
+  Jewel: {fileID: 21300000, guid: be46803e893b4cd41b3d72223935d8aa, type: 3}
 --- !u!61 &7868858371306855165
 BoxCollider2D:
   m_ObjectHideFlags: 0

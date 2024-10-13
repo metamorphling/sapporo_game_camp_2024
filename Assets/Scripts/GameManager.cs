@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager
 {
     public static HPbar HealthBar;
+    public static Player PlayerObject;
     public static int JewelCount = 0;
     public static int TreasureCount =  0;
 

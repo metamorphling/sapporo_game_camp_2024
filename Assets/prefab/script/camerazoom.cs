@@ -11,14 +11,36 @@ public class camerazoom : MonoBehaviour
     [SerializeField]float minzoom = 60f;//ÉJÉÅÉâç≈è¨
     float maxdis = 24.22f;
     float ply;
-    void Start()
+    bool isInitialized;
+
+    bool Initialize()
     {
+        if (isInitialized)
+        {
+            return true;
+        }
+        if (GameManager.PlayerObject)
+        {
+            player = GameManager.PlayerObject.gameObject;
+            isInitialized = true;
+            return true;
+        }
+        return false;
+    }
+    void Awake()
+    {
+        isInitialized = false;
         maincam = GetComponent<Camera>();
-        plpos = player.transform;
-        ply = plpos.position.y;
+
     }
     private void LateUpdate()
     {
+        if (!Initialize())
+        {
+            return;
+        }
+        plpos = player.transform;
+        ply = plpos.position.y;
         movecamera();
         zoomcam();
     }

@@ -23,6 +23,11 @@ public class Player : MonoBehaviour
     public Sprite m_Sprite;
     public Sprite[] m_Sprites;
 
+    void Awake()
+    {
+        GameManager.PlayerObject = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
