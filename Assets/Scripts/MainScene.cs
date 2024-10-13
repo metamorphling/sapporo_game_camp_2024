@@ -20,7 +20,7 @@ public class MainScene : MonoBehaviour
 
     IEnumerator MyCoroutine()
     {
-        SceneManager.LoadScene("Background", LoadSceneMode.Additive);
+        // SceneManager.LoadScene("Background", LoadSceneMode.Additive);
         SceneManager.LoadScene("UI", LoadSceneMode.Additive);
         SceneManager.LoadScene("Block", LoadSceneMode.Additive);
         SceneManager.LoadScene("Player", LoadSceneMode.Additive);
