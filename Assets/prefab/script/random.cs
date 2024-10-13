@@ -20,21 +20,21 @@ public class random : MonoBehaviour
     {
         mapdate = new int[y, x];
         fitmap = new int[y, x];
-        GenerateMap();
+        Map();
     }
 
-    void GenerateMap()
+    void Map()
     {
         for (int i = 0; i < y; i++) // 行のループ
         {
             for (int j = 0; j < x; j++) // 列のループ
             {
                 int type = Random.Range(1, 5); // 1～4のランダム：奇数が凹、偶数が凸
-                GameObject prefab = null;
+                GameObject prefab = null; 
 
                 mapdate[i, j] = type;
-                Check(i, j);
-
+                Check(i, j,type);
+                mapdate[i, j] = type;
                 // タイプに応じてプレハブを選択
                 switch (type)
                 {
@@ -62,7 +62,15 @@ public class random : MonoBehaviour
                 }
                 if (i > 0 && fitmap[i - 1, j] == 1)
                 {
-                    yOffset -= fit; 
+                    if(mapdate[i-1,j]%2==0)
+                    {
+                        yOffset -= 25f;
+                        Debug.Log("aaa");
+                    }
+                    else
+                    {
+                        yOffset -= 25f;
+                    }
                 }
 
                 Vector2 position = new Vector2(j * tileSize + posx, i * tileSize + posy + yOffset);
@@ -77,7 +85,7 @@ public class random : MonoBehaviour
         }
     } // マップ生成の関数
 
-    void Check(int i, int j)
+    void Check(int i, int j,int type)
     {
         bool dif = false; // 異なる奇数偶数があるかどうか
 
@@ -113,7 +121,7 @@ public class random : MonoBehaviour
 
         if (!dif)
         {
-            mapdate[i, j] = (mapdate[i, j] % 2 == 0) ? mapdate[i, j] - 1 : mapdate[i, j] + 1;
+            type += 1; ;
         }
     } // マップチェックの関数
 }

@@ -95,9 +95,9 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5778396163954263080}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: ebfdb9cd1edc37f408b1389c179fb69f, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -124,7 +124,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 48, y: 48}
+    oldSize: {x: 64, y: 64}
     newSize: {x: 2.048, y: 2.048}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -132,14 +132,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 6, y: 24}
-      - {x: 6, y: 2}
-      - {x: -6, y: 2}
-      - {x: -6, y: 24}
-      - {x: -24, y: 24}
-      - {x: -24, y: -24}
-      - {x: 24, y: -24}
-      - {x: 24, y: 24}
+    - - {x: 9.3357525, y: 31.839018}
+      - {x: 8.835388, y: 2}
+      - {x: -8.501812, y: 2}
+      - {x: -9.002176, y: 32.005802}
+      - {x: -31.672224, y: 32.172592}
+      - {x: -31.672226, y: -31.50544}
+      - {x: 31.171858, y: -31.839014}
+      - {x: 31.338655, y: 31.672228}
   m_UseDelaunayMesh: 0
 --- !u!114 &8046034937468807184
 MonoBehaviour:
@@ -181,9 +181,9 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5778396163954263080}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 527c52f1cf4b34642b625463c31b1a9d, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -210,12 +210,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 48, y: 48}
+    oldSize: {x: 64, y: 64}
     newSize: {x: 2.048, y: 2.048}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 48, y: 48}
+  m_Size: {x: 64, y: 64}
   m_EdgeRadius: 0

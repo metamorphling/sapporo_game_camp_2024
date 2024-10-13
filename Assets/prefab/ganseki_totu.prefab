@@ -95,7 +95,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3876887035797018918}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -124,7 +124,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 23}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 48, y: 48}
+    oldSize: {x: 64, y: 64}
     newSize: {x: 2.048, y: 2.048}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -132,14 +132,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 9, y: 2.301093}
-      - {x: 9, y: 24.744719}
-      - {x: -9, y: 24.957088}
-      - {x: -9, y: 2.9381812}
-      - {x: -24.204, y: 2.513454}
-      - {x: -24.204, y: -24.319996}
-      - {x: 24.408, y: -24.532358}
-      - {x: 24.204008, y: 2.5134606}
+    - - {x: 14.250221, y: 2.301093}
+      - {x: 13.620182, y: 31.740723}
+      - {x: -12.780152, y: 31.953083}
+      - {x: -13.830203, y: 3.3754313}
+      - {x: -31.764318, y: 2.7320826}
+      - {x: -31.554306, y: -32.1905}
+      - {x: 31.128273, y: -31.746984}
+      - {x: 31.97435, y: 2.950714}
   m_UseDelaunayMesh: 0
 --- !u!114 &6018712226987380921
 MonoBehaviour:
@@ -181,7 +181,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3876887035797018918}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -208,9 +208,9 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0, y: 0, z: 0, w: 23}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 48, y: 48}
+    oldSize: {x: 64, y: 64}
     newSize: {x: 2.048, y: 2.048}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
