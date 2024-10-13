@@ -18,6 +18,7 @@ public class Sceneschange : MonoBehaviour
     }
     public void change_button()
     {
+        FindObjectOfType<sound>().click();
         SceneManager.LoadScene("Main");
     }
 }

@@ -793,14 +793,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   click1: {fileID: 318514705}
-  click1sound: {fileID: 8300000, guid: 04be8662a5ede3041a891edd1582e471, type: 3}
-  jampsund: {fileID: 0}
-  drillsound: {fileID: 0}
-  errsound: {fileID: 0}
-  break1sound: {fileID: 0}
-  attaksound: {fileID: 0}
-  kriasound: {fileID: 0}
-  oversound: {fileID: 0}
+  click1sound: {fileID: 8300000, guid: b97bd7180da5971439ecf9cbb27a4c50, type: 3}
+  jampsund: {fileID: 8300000, guid: 0265b4a32fed4fc449b0e2aee8a555f2, type: 3}
+  drillsound: {fileID: 8300000, guid: b2050fdb0c3465c47b3987939527a905, type: 3}
+  errsound: {fileID: 8300000, guid: 11bf7046fe3786e4c9f4a5bbc58104ae, type: 3}
+  break1sound: {fileID: 8300000, guid: 73983f705407eb04ba928236174b8b40, type: 3}
+  attaksound: {fileID: 8300000, guid: f6e91d2a80f0c594e9915b2258e03a67, type: 3}
+  kriasound: {fileID: 8300000, guid: b19c3dac0b913ba44a0aae277bc7ec1f, type: 3}
+  oversound: {fileID: 8300000, guid: f8c0b060c224f8f4ba2e02e9dd2cc226, type: 3}
+  DontDestroyEnabled: 1
 --- !u!82 &318514713
 AudioSource:
   m_ObjectHideFlags: 0

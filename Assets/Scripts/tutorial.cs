@@ -42,6 +42,7 @@ public class tutorial : MonoBehaviour
             Element2.SetActive(true);
             Element3.SetActive(false);
             Element4.SetActive(true);
+            
         }
         else if (a == 2)
         {
@@ -54,6 +55,7 @@ public class tutorial : MonoBehaviour
     }
     public void change_button()
     {
+        FindObjectOfType<sound>().click();
         ChangeView(2);
     }
     void DelayMethod()

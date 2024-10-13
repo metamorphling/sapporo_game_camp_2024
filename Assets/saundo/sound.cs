@@ -23,10 +23,14 @@ public class sound : MonoBehaviour
     [SerializeField] private AudioClip kriasound;
     [SerializeField] private AudioClip oversound;
 
-
+    public bool DontDestroyEnabled = true;
     void Start()
     {
-        click();
+        if (DontDestroyEnabled)
+        {
+            // Sceneを遷移してもオブジェクトが消えないようにする
+            DontDestroyOnLoad(this);
+        }
     }
 
     public void click()//ボタンクリック

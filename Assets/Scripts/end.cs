@@ -17,6 +17,7 @@ public class end : MonoBehaviour
     }
     public void EndGame()
     {
+        FindObjectOfType<sound>().click();
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
 #else
