@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -39,6 +40,13 @@ public class Player : MonoBehaviour
 
         // 入力処理
         InputUpdate();
+
+        // ゲームオーバー
+        if(hp <= 0)
+		{
+            hp = 0;
+            GameOver();
+		}
     }
 
     // 入力処理
@@ -229,11 +237,29 @@ public class Player : MonoBehaviour
         // 堀ったタグの更新
         prevDugTag = dugObject.tag;
 
+        int damage = 2;
+        if(dugObject.name.Contains("ganseki"))
+		{
+            damage = 4;
+        }
 
         // スタミナバーを減らす
-        GameManager.HealthBar.DecHP(2);
+        GameManager.HealthBar.DecHP(damage);
 
         // スタミナを減らす
-        hp -= 2;
+        hp -= damage;
+    }
+
+    // ゲームクリア
+    public void GameClear()
+    {
+        // リザルトへ
+        SceneManager.LoadScene("End");
+    }
+
+    public void GameOver()
+	{
+        // リザルトへ？
+        SceneManager.LoadScene("End");
     }
 }
