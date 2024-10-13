@@ -207,6 +207,12 @@ public class Player : MonoBehaviour
                 { // 前回 "凸", かつ今回 "凹"
                     canDig = true;
                 }
+
+                if(other.gameObject.name.Contains("treasure"))
+				{
+                    GameClear();
+                    Debug.Log("clear");
+                }
             }
 
             if (canDig)
@@ -254,12 +260,14 @@ public class Player : MonoBehaviour
     public void GameClear()
     {
         // リザルトへ
+        EndScreen.IsWin = true;
         SceneManager.LoadScene("End");
     }
 
     public void GameOver()
 	{
         // リザルトへ？
-        SceneManager.LoadScene("End");
-    }
+        EndScreen.IsWin = false;
+		SceneManager.LoadScene("End");
+	}
 }
