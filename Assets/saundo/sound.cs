@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class sound : MonoBehaviour
 {
@@ -22,10 +23,17 @@ public class sound : MonoBehaviour
     [SerializeField] private AudioClip attaksound;
     [SerializeField] private AudioClip kriasound;
     [SerializeField] private AudioClip oversound;
+    [SerializeField] private AudioClip bgm1sound;
+    [SerializeField] private AudioClip bgm2sound;
 
-    public bool DontDestroyEnabled = true;
+
+ public bool DontDestroyEnabled = true;
+
     void Start()
     {
+        
+
+
         if (DontDestroyEnabled)
         {
             // Sceneを遷移してもオブジェクトが消えないようにする
@@ -70,5 +78,13 @@ public class sound : MonoBehaviour
     public void over1()//ゲームオーバー
     {
         click1.PlayOneShot(oversound);
+    }
+    public void bgm1()//bgm1
+    {
+        click1.PlayOneShot(bgm1sound);
+    }
+    public void bgm2()//bgm2
+    {
+        click1.PlayOneShot(bgm2sound);
     }
 }

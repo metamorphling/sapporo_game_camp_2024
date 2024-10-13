@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Sceneschange : MonoBehaviour
 {
@@ -18,7 +19,16 @@ public class Sceneschange : MonoBehaviour
     }
     public void change_button()
     {
+
+        StartCoroutine("a");
+
+
+    }
+    private IEnumerator a()
+    {
         FindObjectOfType<sound>().click();
-        SceneManager.LoadScene("Main");
+    yield return new WaitForSeconds(1);
+    SceneManager.LoadScene("Main");
+
     }
 }
