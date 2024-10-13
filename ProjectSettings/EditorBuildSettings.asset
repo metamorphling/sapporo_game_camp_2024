@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Block.unity
     guid: 6cb6c30845cb562479f7f1d40ee87699
   - enabled: 1
+    path: Assets/Scenes/pause.unity
+    guid: 4b72f76cca282f5439699a2f67cec94c
+  - enabled: 1
     path: Assets/Scenes/UI.unity
     guid: ad6296967a0da4e4d84077aeff5b2928
   - enabled: 1

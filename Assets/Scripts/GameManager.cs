@@ -27,6 +27,18 @@ public class GameManager
             EndScreen.IsWin = false;
             SceneManager.LoadScene("End", LoadSceneMode.Single);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape)
+        || Input.GetKeyDown(KeyCode.Pause)
+        || Input.GetKeyDown(KeyCode.Backspace))
+        {
+            Scene scene = SceneManager.GetSceneByName("pause");
+
+            if (!scene.isLoaded)
+            {
+                SceneManager.LoadScene("pause", LoadSceneMode.Additive);
+            }
+        }
     }
 
     public static void Initialize()
