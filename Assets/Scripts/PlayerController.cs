@@ -47,6 +47,11 @@ public class Player : MonoBehaviour
             hp = 0;
             GameOver();
 		}
+
+        if(transform.position.y <= -3500.0f)
+		{
+            GameOver();
+		}
     }
 
     // “ü—Íˆ—
