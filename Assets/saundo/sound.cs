@@ -7,8 +7,8 @@ public class sound : MonoBehaviour
 {
 
     [SerializeField] private AudioSource click1;
-    /*[SerializeField] private AudioSource jamp;
-    [SerializeField] private AudioSource drill;
+    [SerializeField] private AudioSource sound1;
+    /*[SerializeField] private AudioSource drill;
     [SerializeField] private AudioSource err;
     [SerializeField] private AudioSource break1;
     [SerializeField] private AudioSource attak;
@@ -31,9 +31,7 @@ public class sound : MonoBehaviour
 
     void Start()
     {
-        
-
-
+        bgm1();
         if (DontDestroyEnabled)
         {
             // Sceneを遷移してもオブジェクトが消えないようにする
@@ -81,10 +79,10 @@ public class sound : MonoBehaviour
     }
     public void bgm1()//bgm1
     {
-        click1.PlayOneShot(bgm1sound);
+        sound1.PlayOneShot(bgm1sound);
     }
     public void bgm2()//bgm2
     {
-        click1.PlayOneShot(bgm2sound);
+        sound1.PlayOneShot(bgm2sound);
     }
 }
