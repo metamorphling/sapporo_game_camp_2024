@@ -33,7 +33,7 @@ public class tutorial : MonoBehaviour
             Element2.SetActive(false);
             Element3.SetActive(false);
             Element4.SetActive(true);
-            FindObjectOfType<sound>().drill1();
+            
         }
         else if (a == 1)
         {
