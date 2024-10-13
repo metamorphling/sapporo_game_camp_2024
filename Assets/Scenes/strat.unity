@@ -410,7 +410,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -793,14 +793,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   click1: {fileID: 318514705}
-  click1sound: {fileID: 8300000, guid: b97bd7180da5971439ecf9cbb27a4c50, type: 3}
-  jampsund: {fileID: 8300000, guid: 0265b4a32fed4fc449b0e2aee8a555f2, type: 3}
-  drillsound: {fileID: 8300000, guid: b2050fdb0c3465c47b3987939527a905, type: 3}
-  errsound: {fileID: 8300000, guid: 11bf7046fe3786e4c9f4a5bbc58104ae, type: 3}
-  break1sound: {fileID: 8300000, guid: 73983f705407eb04ba928236174b8b40, type: 3}
-  attaksound: {fileID: 8300000, guid: f6e91d2a80f0c594e9915b2258e03a67, type: 3}
-  kriasound: {fileID: 8300000, guid: b19c3dac0b913ba44a0aae277bc7ec1f, type: 3}
-  oversound: {fileID: 8300000, guid: f8c0b060c224f8f4ba2e02e9dd2cc226, type: 3}
+  sound1: {fileID: 318514708}
+  click1sound: {fileID: 8300000, guid: 04526eb9169ec3648a00884e0f08fb56, type: 3}
+  jampsund: {fileID: 8300000, guid: 527abc4ebd6ffe241aeca50ad3488c93, type: 3}
+  drillsound: {fileID: 8300000, guid: 9a22f84754b64d646822b26271044a8f, type: 3}
+  errsound: {fileID: 8300000, guid: 813110f6e745a90439c55955cfd59ace, type: 3}
+  break1sound: {fileID: 8300000, guid: 12baba26582b91e4eae1f5f70e46b802, type: 3}
+  attaksound: {fileID: 8300000, guid: e2acc4c5296c8514bbfb2cbf0c854cc9, type: 3}
+  kriasound: {fileID: 8300000, guid: 57e39d47bd89e1c41946aaee097b06cc, type: 3}
+  oversound: {fileID: 8300000, guid: 00e150870946fbd4ab6420a0f18ced35, type: 3}
+  bgm1sound: {fileID: 8300000, guid: d9a45cd4adaa8d84fb40c39930b6272e, type: 3}
+  bgm2sound: {fileID: 8300000, guid: 1c8342037e005e14c80ccd484400dc55, type: 3}
   DontDestroyEnabled: 1
 --- !u!82 &318514713
 AudioSource:

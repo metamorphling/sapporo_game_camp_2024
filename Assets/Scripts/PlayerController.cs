@@ -97,7 +97,9 @@ public class Player : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        { // W キー，もしくは上矢印キーを押した
+        {
+            FindObjectOfType<sound>().jamp1();
+            // W キー，もしくは上矢印キーを押した
             isJumping = true; // ジャンプしている状態にする
             this.rigid2D.AddForce(transform.up * this.jumpForce);
         }

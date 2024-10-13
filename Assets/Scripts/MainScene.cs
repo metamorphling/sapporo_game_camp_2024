@@ -7,6 +7,8 @@ public class MainScene : MonoBehaviour
 {
     void Awake()
     {
+        FindObjectOfType<sound>().bgm2();
+
         GameManager.Initialize();
 
         StartCoroutine(MyCoroutine());
