@@ -7,7 +7,11 @@ public class MainScene : MonoBehaviour
 {
     void Awake()
     {
-        FindObjectOfType<sound>().bgm2();
+        sound snd = FindObjectOfType<sound>();
+        if (snd)
+        {
+            snd.bgm2();
+        }
 
         GameManager.Initialize();
 
